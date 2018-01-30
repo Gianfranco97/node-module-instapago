@@ -1,0 +1,19 @@
+{
+  "name": "instapago-api",
+  "version": "0.1.0",
+  "description": "Node client to interact with INSTAPAGO API REST",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gianfranco97/node-module-instapago.git"
+  },
+  "author": "Gianfranco Manganiello <gianfrancomanganiello1997@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Gianfranco97/node-module-instapago/issues"
+  },
+  "homepage": "https://github.com/Gianfranco97/node-module-instapago#readme"
+}
