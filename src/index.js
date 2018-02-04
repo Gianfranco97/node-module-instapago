@@ -99,7 +99,7 @@ class InstapagoRestClient {
     completePayment (options) {
         return new Promise((resolve, reject) => {
             try {
-                this._prepareRequest('POST', 'payment', options, (response, data) => {
+                this._prepareRequest('POST', 'complete', options, (response, data) => {
                     if (response.statusCode >= 400 && status < 600) {
                         reject(JSON.parse(data))
                     } else {
@@ -115,7 +115,7 @@ class InstapagoRestClient {
     cancelPayment (options) {
         return new Promise((resolve, reject) => {
             try {
-                this._prepareRequest('GET', 'payment', options, (response, data) => {
+                this._prepareRequest('DELETE', 'payment', options, (response, data) => {
                     if (response.statusCode >= 400 && status < 600) {
                         reject(JSON.parse(data))
                     } else {
@@ -128,5 +128,19 @@ class InstapagoRestClient {
         })
     }
 
-    paymentInquiry
+    paymentInquiry (options) {
+        return new Promise((resolve, reject) => {
+            try {
+                this._prepareRequest('GET', 'payment', options, (response, data) => {
+                    if (response.statusCode >= 400 && status < 600) {
+                        reject(JSON.parse(data))
+                    } else {
+                        resolve(JSON.parse(data))
+                    }
+                }).end()
+            } catch (err) {
+                reject(err)
+            }
+        })
+    } 
 }
