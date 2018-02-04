@@ -35,15 +35,22 @@ class InstapagoRestClient {
 
         let bodyString = ''
 
-        options = {
-            ...options,
-            KeyId: this._apiKey,
-            PublicKeyId: this._publicKey
+        if (method !== "GET") {
+            options = {
+                ...options,
+                KeyId: this._apiKey,
+                PublicKeyId: this._publicKey
+            }
+            
+            bodyString = JSON.stringify(options)
+            headers = {...headers, 'Content-Length': bodyString.length}
+        } else {
+            for (let obj in options) {
+                if (options[obj]) {
+                    requestOptions.searchParams.append(obj, options[obj])
+                }
+            }
         }
-        
-        bodyString = JSON.stringify(options)
-        headers = {...headers, 'Content-Length': bodyString.length}
-        
 
         const requestData = {
             'hostname': requestOptions.hostname,
@@ -108,7 +115,7 @@ class InstapagoRestClient {
     cancelPayment (options) {
         return new Promise((resolve, reject) => {
             try {
-                this._prepareRequest('POST', 'payment', options, (response, data) => {
+                this._prepareRequest('GET', 'payment', options, (response, data) => {
                     if (response.statusCode >= 400 && status < 600) {
                         reject(JSON.parse(data))
                     } else {
@@ -120,4 +127,6 @@ class InstapagoRestClient {
             }
         })
     }
+
+    paymentInquiry
 }
