@@ -104,4 +104,20 @@ class InstapagoRestClient {
             }
         })
     }
+
+    cancelPayment (options) {
+        return new Promise((resolve, reject) => {
+            try {
+                this._prepareRequest('POST', 'payment', options, (response, data) => {
+                    if (response.statusCode >= 400 && status < 600) {
+                        reject(JSON.parse(data))
+                    } else {
+                        resolve(JSON.parse(data))
+                    }
+                }).end()
+            } catch (err) {
+                reject(err)
+            }
+        })
+    }
 }
