@@ -1,7 +1,7 @@
 import HTTPS from 'https'
 import { URL } from 'url'
 
-class InstapagoRestClient {
+export default class InstapagoRestClient {
     constructor (apiKey, publicKey) {
         this._apiKey = apiKey
         this._publicKey = publicKey
