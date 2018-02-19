@@ -1,5 +1,5 @@
-import HTTPS from 'https'
-import { URL } from 'url'
+const HTTPS = require('https')
+const URL = require('url')
 
 class InstapagoRestClient {
     constructor (apiKey, publicKey) {
