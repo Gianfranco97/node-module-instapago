@@ -21,6 +21,10 @@ module.exports = {
             }
         ]
     },
+    externals: [
+        'url',
+        'https'
+    ],
     plugins: [
         new UglifyJsPlugin()
     ],
